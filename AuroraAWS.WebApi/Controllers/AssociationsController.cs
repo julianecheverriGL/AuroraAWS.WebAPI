@@ -10,9 +10,9 @@ namespace AuroraAWS.WebApi.Controllers
     [ApiController]
     public class AssociationsController : ControllerBase
     {
-        private readonly MetaDataDBContext _context;
+        private readonly MetaDataDBAuroraContext _context;
 
-        public AssociationsController(MetaDataDBContext context)
+        public AssociationsController(MetaDataDBAuroraContext context)
         {
             _context = context;
         }

@@ -2,13 +2,13 @@
 
 namespace AuroraAWS.WebApi.Models
 {
-    public partial class MetaDataDBContext : DbContext
+    public partial class MetaDataDBAuroraContext : DbContext
     {
-        public MetaDataDBContext()
+        public MetaDataDBAuroraContext()
         {
         }
 
-        public MetaDataDBContext(DbContextOptions<MetaDataDBContext> options)
+        public MetaDataDBAuroraContext(DbContextOptions<MetaDataDBAuroraContext> options)
             : base(options)
         {
         }
@@ -20,7 +20,11 @@ namespace AuroraAWS.WebApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=metadatacluster.ciwawmmpzleq.us-east-1.rds.amazonaws.com;database=MetaDataDB;uid=admin;pwd=Admin123*", x => x.ServerVersion("8.0.20-mysql"));
+                // Aurora/MySql
+                optionsBuilder.UseMySql("server=metadatacluster-instance-1.ciwawmmpzleq.us-east-1.rds.amazonaws.com;database=MetaDataDBAurora;uid=admin;pwd=Admin123*", x => x.ServerVersion("5.7.12-mysql"));
+
+                // MySql
+                //optionsBuilder.UseMySql("server=metadatacluster.ciwawmmpzleq.us-east-1.rds.amazonaws.com;database=MetaDataDB;uid=admin;pwd=Admin123*", x => x.ServerVersion("8.0.20-mysql"));
             }
         }
 
@@ -28,40 +32,44 @@ namespace AuroraAWS.WebApi.Models
         {
             modelBuilder.Entity<Association>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
                     .HasColumnName("address")
                     .HasColumnType("varchar(45)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name")
                     .HasColumnType("varchar(150)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
             });
 
             modelBuilder.Entity<Person>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasColumnName("email")
                     .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name")
                     .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
             });
 
             OnModelCreatingPartial(modelBuilder);
