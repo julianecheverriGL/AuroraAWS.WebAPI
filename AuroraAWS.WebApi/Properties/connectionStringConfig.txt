@@ -3,6 +3,8 @@
 Endpoint AWS
 metadatacluster.ciwawmmpzleq.us-east-1.rds.amazonaws.com
 
+dotnet tool install --global dotnet-ef 
+
 
 Provider
 Pomelo.EntityFrameworkCore.MySql 
