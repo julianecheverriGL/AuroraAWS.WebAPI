@@ -31,6 +31,7 @@ namespace AuroraAWS.WebApi.Models
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<Association> Associations { get; set; }
+        public DbSet<AssociationPerson> AssociationsPersons { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
