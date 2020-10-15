@@ -13,8 +13,6 @@ namespace AuroraAWS.WebApi.Models
         {
         }
 
-        public virtual DbSet<Association> Associations { get; set; }
-        public virtual DbSet<Person> Persons { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,53 +29,56 @@ namespace AuroraAWS.WebApi.Models
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Association>(entity =>
-            {
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("int(11)");
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Association> Associations { get; set; }
 
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasColumnName("address")
-                    .HasColumnType("varchar(45)")
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Association>(entity =>
+        //    {
+        //        entity.Property(e => e.Id)
+        //            .HasColumnName("id")
+        //            .HasColumnType("int(11)");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnName("name")
-                    .HasColumnType("varchar(150)")
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
-            });
+        //        entity.Property(e => e.Address)
+        //            .IsRequired()
+        //            .HasColumnName("address")
+        //            .HasColumnType("varchar(45)")
+        //            .HasCharSet("latin1")
+        //            .HasCollation("latin1_swedish_ci");
 
-            modelBuilder.Entity<Person>(entity =>
-            {
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("int(11)");
+        //        entity.Property(e => e.Name)
+        //            .IsRequired()
+        //            .HasColumnName("name")
+        //            .HasColumnType("varchar(150)")
+        //            .HasCharSet("latin1")
+        //            .HasCollation("latin1_swedish_ci");
+        //    });
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasColumnName("email")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+        //    modelBuilder.Entity<Person>(entity =>
+        //    {
+        //        entity.Property(e => e.Id)
+        //            .HasColumnName("id")
+        //            .HasColumnType("int(11)");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnName("name")
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
-            });
+        //        entity.Property(e => e.Email)
+        //            .IsRequired()
+        //            .HasColumnName("email")
+        //            .HasColumnType("varchar(50)")
+        //            .HasCharSet("latin1")
+        //            .HasCollation("latin1_swedish_ci");
 
-            OnModelCreatingPartial(modelBuilder);
-        }
+        //        entity.Property(e => e.Name)
+        //            .IsRequired()
+        //            .HasColumnName("name")
+        //            .HasColumnType("varchar(100)")
+        //            .HasCharSet("latin1")
+        //            .HasCollation("latin1_swedish_ci");
+        //    });
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        //    OnModelCreatingPartial(modelBuilder);
+        //}
+
+        //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
