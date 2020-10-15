@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuroraAWS.WebApi.Migrations
 {
-    [DbContext(typeof(MetaDataDBAuroraContext))]
+    [DbContext(typeof(MetaDataDBContext))]
     partial class MetaDataDBAuroraContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

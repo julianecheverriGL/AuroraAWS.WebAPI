@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuroraAWS.WebApi.Migrations
 {
-    [DbContext(typeof(MetaDataDBAuroraContext))]
+    [DbContext(typeof(MetaDataDBContext))]
     [Migration("20201015161129_AssociationPersonMigration")]
     partial class AssociationPersonMigration
     {
