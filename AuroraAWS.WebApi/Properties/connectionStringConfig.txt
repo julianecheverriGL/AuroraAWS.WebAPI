@@ -22,4 +22,6 @@ scaffold-dbcontext "Server=metadatacluster-instance-1.ciwawmmpzleq.us-east-1.rds
 mac
 
 
+dotnet ef dbcontext scaffold "Server=localhost;Database=MetaDataMySQLDocker;Uid=root;Pwd=password;" Pomelo.EntityFrameworkCore.MySql  -o \Models
+
 dotnet ef dbcontext scaffold "Server=metadatacluster-instance-1.ciwawmmpzleq.us-east-1.rds.amazonaws.com;Database=MetaDataDBAurora;Uid=admin;Pwd=Admin123*;" Pomelo.EntityFrameworkCore.MySql  -o \Models

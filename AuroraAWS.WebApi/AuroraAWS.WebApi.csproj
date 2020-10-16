@@ -28,4 +28,8 @@
     <Compile Remove="Migrations\20201015160154_Initial.cs" />
     <Compile Remove="Migrations\20201015160154_Initial.Designer.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Enum\" />
+  </ItemGroup>
 </Project>
